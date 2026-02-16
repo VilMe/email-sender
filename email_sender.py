@@ -12,4 +12,4 @@ def create_image_attachment(path: str) -> MIMEImage:
 
 def send_email(to_email: str, subject: str, body: str, image: str | None = None):
     host: str = 'smtp-mail.outlook.com'
-    port: int = 
+    port: int = 587
