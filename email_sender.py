@@ -13,3 +13,8 @@ def create_image_attachment(path: str) -> MIMEImage:
 def send_email(to_email: str, subject: str, body: str, image: str | None = None):
     host: str = 'smtp-mail.outlook.com'
     port: int = 587
+
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP(host, port) as server:
+        print('logging in...')
