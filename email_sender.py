@@ -23,3 +23,17 @@ def send_email(to_email: str, subject: str, body: str, image: str | None = None)
         server.starttls(context=context)
         server.ehlo()
         server.login(email,password)
+
+        # prepare the email
+        print('Attempting to send the email')
+        message = MIMEMultipart()
+        message['From'] = email
+        message['To'] = to_email
+        message['Subject'] = subject
+        message.attach(MIMEText(body, 'plain'))
+
+        if image:
+            file: MIMEImage = create_image_attachment(image)
+            message.attach(file)
+
+        server.sendmail(from_addr=email, to_addrs=to_email, msg=message.as_string())
