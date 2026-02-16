@@ -4,7 +4,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from typing import Any
 
-
+email = 'email env var'
+password = 'password env var'
 
 def create_image_attachment(path: str) -> MIMEImage:
     raise NotImplementedError('Code not implmented')
@@ -18,3 +19,7 @@ def send_email(to_email: str, subject: str, body: str, image: str | None = None)
 
     with smtplib.SMTP(host, port) as server:
         print('logging in...')
+        server.ehlo()
+        server.starttls(context=context)
+        server.ehlo()
+        server.login(email,password)
