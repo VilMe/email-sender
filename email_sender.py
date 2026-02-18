@@ -37,3 +37,7 @@ def send_email(to_email: str, subject: str, body: str, image: str | None = None)
             message.attach(file)
 
         server.sendmail(from_addr=email, to_addrs=to_email, msg=message.as_string())
+
+
+        # Success!
+        print('Sent!')
