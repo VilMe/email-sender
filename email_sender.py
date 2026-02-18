@@ -41,3 +41,9 @@ def send_email(to_email: str, subject: str, body: str, image: str | None = None)
 
         # Success!
         print('Sent!')
+
+
+        if __name__ == '__main__':
+            send_email(to_email="email@email",
+                       subject="Hey there buddy",
+                       body="hi there, how goes it!")
