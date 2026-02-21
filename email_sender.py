@@ -8,7 +8,9 @@ email = 'email env var'
 password = 'password env var'
 
 def create_image_attachment(path: str) -> MIMEImage:
-    raise NotImplementedError('Code not implmented')
+    with open(path, 'rb') as image:
+        mime_image = MIMEImage(image.read())
+        mime_image.add_header('Content-Disposition', f'attachment; filename={path}')
 
 
 def send_email(to_email: str, subject: str, body: str, image: str | None = None):
